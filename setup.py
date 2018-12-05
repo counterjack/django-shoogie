@@ -16,7 +16,7 @@ def get_version(package_name, default='0.1'):
             f = open(join(base_dir, package_name + '.py'))
         except IOError:
             return default
-    scope = {}
+    scope = {'__version__' : "0.8"}
     #exec f in scope
     return scope.get('__version__', default)
 
