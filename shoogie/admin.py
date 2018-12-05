@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.contrib.admin.views.main import ChangeList
 try:
-    from django.conf.urls import patterns, url
+    from django.conf.urls import url
 except ImportError:
-    from django.conf.urls.defaults import patterns, url
+    from django.conf.urls import url
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 
@@ -148,12 +148,12 @@ class ServerErrorAdmin(admin.ModelAdmin):
 
     def get_urls(self):
         myview = views.TechnicalResponseView.as_view()
-        myurls = patterns('',
+        myurls = ['',
             url(r'(?P<pk>\d+)/technicalresponse/$',
                 self.admin_site.admin_view(myview, cacheable=True),
                 name='shoogie_technicalresponse',
             ),
-        )
+        ]
         return myurls + super(ServerErrorAdmin, self).get_urls()
 
 admin.site.register(models.ServerError, ServerErrorAdmin)
