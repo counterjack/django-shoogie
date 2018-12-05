@@ -17,7 +17,7 @@ def get_version(package_name, default='0.1'):
         except IOError:
             return default
     scope = {}
-    exec f in scope
+    #exec f in scope
     return scope.get('__version__', default)
 
 setup(
